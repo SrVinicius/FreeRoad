@@ -1,0 +1,206 @@
+.dashboard-container {
+  max-width: 520px;
+  margin: 40px auto;
+  font-family: 'Inter', Arial, sans-serif;
+  text-align: left;
+}
+
+h1 {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 0.2em;
+}
+
+.subtitle {
+  color: #bdbdbd;
+  margin-bottom: 2em;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.recent-label {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.add-button {
+  background-color: #f4f4f4;
+  color: #000;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.table-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0001;
+  padding: 0;
+  overflow: hidden;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 1.08em;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 14px 10px;
+  text-align: left;
+}
+
+.custom-table tr:hover {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Sombra mais forte no hover */
+}
+
+.custom-table th {
+  background: #fafafa;
+  color: #bdbdbd;
+  font-weight: 600;
+  font-size: 1em;
+  border: none;
+}
+
+.custom-table tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.custom-table td {
+  background: #fff;
+  border: none;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  outline: none;
+  padding: 0 8px;
+}
+
+.em-andamento {
+  color: #ff9800;
+  font-weight: 500;
+}
+
+.detalhes-row td {
+  background: #fafafa;
+  padding: 18px 10px;
+}
+
+.detalhes-grid {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 14px;
+}
+
+.detalhes-grid input {
+  background-color: #fff !important; /* Sobrescreve qualquer regra anterior */
+  color: #000; /* Define o texto preto */
+  border: 1px solid #e0e0e0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+.detalhe-destaque {
+  font-weight: 600;
+  font-size: 1.1em;
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.finalizar-form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.input-km {
+  margin-left: 8px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  font-size: 1em;
+  width: 120px;
+}
+
+.finalizar-btn {
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 22px;
+  font-size: 1em;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.finalizar-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background-color: #f1f1f1;
+}
+
+.add-semana-form {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+}
+
+.add-semana-form h2 {
+  margin-bottom: 10px;
+}
+
+.add-semana-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.add-semana-form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.add-semana-button {
+  background-color: #000;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: #f4f4f4;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
