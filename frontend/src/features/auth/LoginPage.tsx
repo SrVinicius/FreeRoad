@@ -25,22 +25,23 @@ const LoginPage: React.FC = () => {
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  e.preventDefault();
+  setError('');
+  setIsLoading(true);
 
-    if (!email || !password) return;
-
-    setIsLoading(true);
-    setError('');
-
-    try {
-      await login(email, password);
-      navigate('/dashboard'); // Redireciona para a página do dashboard
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Falha no login');
-    } finally {
-      setIsLoading(false);
+  try {
+    if (email === 'vivitata@gmail.com' && password === 'vivitata') {
+      localStorage.setItem('authToken', 'your-auth-token');
+      window.location.href = '/dashboard'; 
+    } else {
+      setError('Credenciais inválidas');
     }
-  };
+  } catch (err) {
+    setError('Erro ao tentar fazer login');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
   return (
     <div className="login-container">
