@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { semanas as semanasMock, Semana } from '../../mocks/tableData';
-import '../../styles/TableStyle.css';
+import {
+  DashboardContainer,
+  HeaderRow,
+  AddSemanaForm,
+  TableCard,
+  DetalhesGrid,
+  FinalizarForm,
+  EmAndamento
+} from '../../styles/TableStyle';
 
 const DashboardPage: React.FC = () => {
   const [semanas, setSemanas] = useState<Semana[]>(semanasMock);
@@ -59,17 +67,16 @@ const DashboardPage: React.FC = () => {
   };
 
   return (
-    <div className="dashboard-container">
+    <DashboardContainer>
       <h1>Gerenciamento de combustível</h1>
       <p className="subtitle">Armazene e analise o consumo de seu veículo</p>
-      <div className="header-row">
-        <span className="recent-label">Adições recentes</span>
+      <HeaderRow>
         <button className="add-button" onClick={() => setIsAdding(!isAdding)}>
           {isAdding ? 'Fechar Adição' : '+ Add Semana'}
         </button>
-      </div>
+      </HeaderRow>
       {isAdding && (
-        <div className="add-semana-form">
+        <AddSemanaForm>
           <form>
             <label>
               Custo (R$)
@@ -99,10 +106,10 @@ const DashboardPage: React.FC = () => {
               Adicionar Semana
             </button>
           </form>
-        </div>
+        </AddSemanaForm>
       )}
-      <div className="table-card">
-        <table className="custom-table">
+      <TableCard>
+        <table>
           <thead>
             <tr>
               <th>Semana</th>
@@ -122,7 +129,7 @@ const DashboardPage: React.FC = () => {
                   <td>{semana.custo}</td>
                   <td>
                     {semana.eficiencia === 'Em andamento' ? (
-                      <span className="em-andamento">Em andamento</span>
+                      <EmAndamento> Em andamento </EmAndamento>
                     ) : (
                       semana.eficiencia
                     )}
@@ -131,7 +138,7 @@ const DashboardPage: React.FC = () => {
                 {semana.aberta && (
                   <tr className="detalhes-row">
                     <td colSpan={3}>
-                      <div className="detalhes-grid">
+                      <DetalhesGrid>
                         <div>
                           <strong>Km. Inicial</strong><br />
                           <span className="detalhe-destaque">{semana.detalhes.kmInicial || '-'}</span>
@@ -144,10 +151,9 @@ const DashboardPage: React.FC = () => {
                           <strong>Qtd. Abastecida</strong><br />
                           <span className="detalhe-destaque">{semana.detalhes.qtdAbastecida || '-'}</span>
                         </div>
-                      </div>
+                      </DetalhesGrid>
                       {semana.eficiencia === 'Em andamento' && (
-                        <form
-                          className="finalizar-form"
+                        <FinalizarForm
                           onSubmit={(e) => {
                             e.preventDefault();
                             const kmFinal = parseFloat((e.target as HTMLFormElement).kmFinal.value);
@@ -170,7 +176,7 @@ const DashboardPage: React.FC = () => {
                           <button type="submit" className="finalizar-btn">
                             Finalizar
                           </button>
-                        </form>
+                        </FinalizarForm>
                       )}
                     </td>
                   </tr>
@@ -179,8 +185,8 @@ const DashboardPage: React.FC = () => {
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
+      </TableCard>
+    </DashboardContainer>
   );
 };
 
