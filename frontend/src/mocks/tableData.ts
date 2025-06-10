@@ -9,7 +9,6 @@ export interface Semana {
     kmFinal: string;
     qtdAbastecida: string;
   };
-  aberta: boolean;
 }
 
 export const semanas: Semana[] = [
@@ -23,7 +22,6 @@ export const semanas: Semana[] = [
       kmFinal: 'Não inserida',
       qtdAbastecida: '45'
     },
-    aberta: false
   },
   {
     id: 2,
@@ -35,7 +33,6 @@ export const semanas: Semana[] = [
       kmFinal: '11400',
       qtdAbastecida: '12'
     },
-    aberta: false
   },
   {
     id: 3,
@@ -48,6 +45,5 @@ export const semanas: Semana[] = [
       kmFinal: '',
       qtdAbastecida: '12'
     },
-    aberta: false
   }
 ];

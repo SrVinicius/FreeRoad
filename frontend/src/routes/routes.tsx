@@ -23,12 +23,12 @@ const AppRoutes: React.FC = () => {
   return (
     <Router>
       <Routes>
-        {/* pública */}
+        {/* publica aqui tata*/}
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/about" element={<AboutPage />} />
 
-        {/* privada */}
+        {/* privada aqui */}
         <Route
           path="/dashboard"
           element={
