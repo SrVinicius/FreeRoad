@@ -8,7 +8,7 @@ import {
   DetalhesGrid,
   FinalizarForm,
   EmAndamento
-} from '../../styles/TableStyle';
+} from './TableStyle';
 
 const DashboardPage: React.FC = () => {
   const [semanas, setSemanas] = useState<Semana[]>(semanasMock);

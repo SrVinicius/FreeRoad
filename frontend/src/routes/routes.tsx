@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import LoginPage from '../features/auth/LoginPage';
+import LoginPage from '../features/auth/Login/LoginPage';
+import RegisterPage from '../features/auth/Register/RegisterPage'
 import DashboardPage from '../features/dashboard/DashboardPage';
+import AboutPage from '../features/About/AboutScreen';
 
 const isAuthenticated = () => {
   const token = localStorage.getItem('authToken');
@@ -23,6 +25,8 @@ const AppRoutes: React.FC = () => {
       <Routes>
         {/* pública */}
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/about" element={<AboutPage />} />
 
         {/* privada */}
         <Route

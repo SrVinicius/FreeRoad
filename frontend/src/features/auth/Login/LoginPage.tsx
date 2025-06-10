@@ -9,7 +9,7 @@ import {
   Subtitle,
   InputGroup,
   Button,
-} from '../../styles/LoginPage';
+} from './LoginPageStyle';
 
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
