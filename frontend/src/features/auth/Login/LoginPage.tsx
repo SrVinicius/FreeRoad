@@ -21,8 +21,8 @@ const LoginPage: React.FC = () => {
     setError('');
 
     if (email === 'vivitata@gmail.com' && password === 'vivitata') {
-      localStorage.setItem('authToken', 'your-auth-token'); 
-      window.location.href = '/dashboard'; 
+      localStorage.setItem('authToken', 'your-auth-token');
+      window.location.href = '/dashboard';
     } else {
       setError('Credenciais inválidas');
     }
@@ -39,8 +39,9 @@ const LoginPage: React.FC = () => {
             <Subtitle>Utilize suas credenciais para acessar sua conta</Subtitle>
             <form onSubmit={handleSubmit}>
               <InputGroup>
-                <label>Email</label>
+                <label htmlFor="email">Email</label>
                 <input
+                  id="email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -48,8 +49,9 @@ const LoginPage: React.FC = () => {
                 />
               </InputGroup>
               <InputGroup>
-                <label>Senha</label>
+                <label htmlFor="password">Senha</label>
                 <input
+                  id="password"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
