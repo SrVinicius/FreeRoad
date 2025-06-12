@@ -32,13 +32,13 @@ const DashboardPage: React.FC = () => {
     const novaSemana: Semana = {
       id: semanas.length + 1,
       nome: `Semana ${semanas.length + 1}`,
-      custo: parseFloat(newSemana.custo),
+      custo: parseFloat(newSemana.custo).toString(),
       eficiencia: 'Em andamento',
       aberta: false,
       detalhes: {
-        kmInicial: parseFloat(newSemana.kmAtual),
-        kmFinal: null,
-        qtdAbastecida: parseFloat(newSemana.litrosAbastecidos),
+        kmInicial: parseFloat(newSemana.kmAtual).toString(),
+        kmFinal: '',
+        qtdAbastecida: parseFloat(newSemana.litrosAbastecidos).toString(),
       },
     };
 
@@ -52,13 +52,15 @@ const DashboardPage: React.FC = () => {
       semanas.map(sem => {
         if (sem.id === id) {
           const eficiencia =
-            sem.detalhes.kmInicial && kmFinal && sem.detalhes.qtdAbastecida
-              ? ((kmFinal - sem.detalhes.kmInicial) / sem.detalhes.qtdAbastecida).toFixed(2)
+            sem.detalhes.kmInicial &&
+              kmFinal &&
+              sem.detalhes.qtdAbastecida
+              ? ((kmFinal - parseFloat(sem.detalhes.kmInicial)) / parseFloat(sem.detalhes.qtdAbastecida)).toFixed(2)
               : 'N/A';
           return {
             ...sem,
             eficiencia: eficiencia !== 'N/A' ? `${eficiencia} km/L` : 'N/A',
-            detalhes: { ...sem.detalhes, kmFinal },
+            detalhes: { ...sem.detalhes, kmFinal: kmFinal.toString() },
           };
         }
         return sem;

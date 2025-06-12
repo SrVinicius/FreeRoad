@@ -9,6 +9,7 @@ export interface Semana {
     kmFinal: string;
     qtdAbastecida: string;
   };
+  aberta?: boolean;
 }
 
 export const semanas: Semana[] = [
