@@ -18,25 +18,20 @@ jobs:
         with:
           node-version: 18
 
-      - name: Navigate to frontend directory
-        run: cd frontend
-
       - name: Install dependencies
-        run: |
-          cd frontend
-          npm install
+        working-directory: frontend
+        run: npm install
 
       - name: Run tests
-        run: |
-          cd frontend
-          npm run test
+        working-directory: frontend
+        run: npm run test
 
       - name: Deploy to Vercel
+        working-directory: frontend
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
-          cd frontend
           npm install -g vercel
-          vercel --token=$VERCEL_TOKEN --prod --yes --confirm
+          vercel --token=$VERCEL_TOKEN --prod --yes
