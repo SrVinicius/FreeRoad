@@ -27,7 +27,6 @@ jobs:
         run: npm run test
 
       - name: Deploy to Vercel
-        working-directory: frontend  # MOVER PARA AQUI
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
