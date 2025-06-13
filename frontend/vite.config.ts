@@ -9,7 +9,8 @@ export default defineConfig({
     setupFiles: 'src/__tests__/setupTest.ts',
     coverage: {
       reporter: ['text', 'html'], 
-      exclude: ['src/__tests__/**'], 
+      exclude: ['src/__tests__/**'], // Exclui arquivos de teste
+      include: ['src/**/*.{ts,tsx}'], // Inclui apenas arquivos dentro de src
     },
   },
 });
