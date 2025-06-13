@@ -27,10 +27,11 @@ jobs:
         run: npm run test
 
       - name: Deploy to Vercel
+        working-directory: frontend  # MOVER PARA AQUI
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
         run: |
           npm install -g vercel
-          vercel --cwd frontend --token=$VERCEL_TOKEN --prod --yes
+          vercel --prod --token=$VERCEL_TOKEN --yes
