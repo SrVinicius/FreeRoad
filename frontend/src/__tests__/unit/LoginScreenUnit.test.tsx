@@ -73,3 +73,10 @@
 //         expect(passwordInput.validity.valueMissing).toBe(true);
 //     });
 // });
+import { describe, it, expect } from 'vitest';
+
+describe('Operações matemáticas simples', () => {
+  it('verifica que 1 + 1 = 2', () => {
+    expect(1 + 1).toBe(2);
+  });
+});
