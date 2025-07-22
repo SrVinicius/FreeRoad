@@ -9,6 +9,22 @@ export const DashboardContainer = styled.div`
   margin: 0 auto; 
   background-color: #f9f9f9;
   font-family: sans-serif;
+  
+  .error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+  }
+  
+  .subtitle {
+    margin-bottom: 20px;
+    color: #666;
+  }
 `;
 
 export const HeaderRow = styled.div`
@@ -16,13 +32,15 @@ export const HeaderRow = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  width: 100%;
+  max-width: 900px;
 
   .recent-label {
     font-size: 18px;
     font-weight: bold;
   }
 
-  .add-button {
+  .add-button, .logout-button {
     background-color: white;
     color: black;
     border: 1px solid #ccc; 
@@ -33,6 +51,16 @@ export const HeaderRow = styled.div`
 
     &:hover {
       background-color: #f4f4f4;
+    }
+  }
+  
+  .logout-button {
+    background-color: #f5f5f5;
+    color: #333;
+    margin-left: 10px;
+    
+    &:hover {
+      background-color: #e0e0e0;
     }
   }
 `;
@@ -88,6 +116,21 @@ export const TableCard = styled.div`
   overflow: hidden;
   width: 100%;
   max-width: 900px;
+  
+  .loading, .no-data {
+    padding: 30px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+  }
+  
+  .loading {
+    color: #888;
+  }
+  
+  .no-data {
+    font-style: italic;
+  }
 
   table {
     width: 100%;
@@ -133,6 +176,24 @@ export const DetalhesGrid = styled.div`
     .detalhe-destaque {
       font-size: 14px;
       color: #333;
+    }
+  }
+  
+  .actions {
+    margin-left: auto;
+    
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+      
+      &:hover {
+        background-color: #d32f2f;
+      }
     }
   }
 `;
@@ -182,4 +243,24 @@ export const Title = styled.h1`
   font-weight: bold;
   color: #000;
   font-family: sans-serif;
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 10px;
+  
+  .user-greeting {
+    font-size: 14px;
+    color: #666;
+    text-align: right;
+    
+    strong {
+      color: #333;
+      font-weight: bold;
+    }
+  }
 `;

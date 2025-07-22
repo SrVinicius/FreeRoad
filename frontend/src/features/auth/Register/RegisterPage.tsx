@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa o hook de navegação
+import { useNavigate } from 'react-router-dom';
 import {
   RegisterScreen,
   RegisterContainer,
@@ -10,6 +10,7 @@ import {
   InputGroup,
   Button,
 } from './RegisterPageStyle';
+import * as authService from '../../../services/authService';
 
 const RegisterPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,21 +18,51 @@ const RegisterPage: React.FC = () => {
     email: '',
     password: '',
   });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  const navigate = useNavigate(); // Inicializa o hook de navegação
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form Data:', formData);
+    setError('');
+    setLoading(true);
 
-    // Simula o registro e redireciona para a dashboard
-    localStorage.setItem('authToken', 'your-auth-token'); // Salva um token de autenticação
-    navigate('/dashboard'); // Redireciona para a rota da dashboard
+    try {
+      // Chamar API de registro
+      await authService.register({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        role: 'user' // Papel padrão para novos usuários
+      });
+      
+      // Após o registro bem-sucedido, fazer login
+      await authService.login({
+        email: formData.email,
+        password: formData.password
+      });
+      
+      // Redirecionar para o dashboard
+      navigate('/dashboard');
+    } catch (err: unknown) {
+      console.error('Erro ao registrar:', err);
+      if (err && typeof err === 'object' && 'response' in err && 
+          err.response && typeof err.response === 'object' && 
+          'data' in err.response && err.response.data && 
+          typeof err.response.data === 'object' && 'detail' in err.response.data) {
+        setError(String(err.response.data.detail));
+      } else {
+        setError('Erro ao registrar. Tente novamente mais tarde.');
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -41,6 +72,7 @@ const RegisterPage: React.FC = () => {
         <RegisterCard>
           <Title>Registrar</Title>
           <Subtitle>Crie sua conta para acessar o sistema</Subtitle>
+          {error && <p style={{ color: 'red', marginBottom: '15px' }}>{error}</p>}
           <form onSubmit={handleSubmit}>
             <InputGroup>
               <label>Nome</label>
@@ -49,6 +81,7 @@ const RegisterPage: React.FC = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
+                disabled={loading}
                 required
               />
             </InputGroup>
@@ -59,6 +92,7 @@ const RegisterPage: React.FC = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
+                disabled={loading}
                 required
               />
             </InputGroup>
@@ -69,10 +103,13 @@ const RegisterPage: React.FC = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
+                disabled={loading}
                 required
               />
             </InputGroup>
-            <Button type="submit">Registrar</Button>
+            <Button type="submit" disabled={loading}>
+              {loading ? 'Registrando...' : 'Registrar'}
+            </Button>
           </form>
         </RegisterCard>
       </RegisterContainer>

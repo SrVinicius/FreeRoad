@@ -4,14 +4,10 @@ import LoginPage from '../features/auth/Login/LoginPage';
 import RegisterPage from '../features/auth/Register/RegisterPage'
 import DashboardPage from '../features/dashboard/DashboardPage';
 import AboutPage from '../features/About/AboutScreen';
-
-const isAuthenticated = () => {
-  const token = localStorage.getItem('authToken');
-  return token !== null && token !== ''; 
-};
+import * as authService from '../services/authService';
 
 const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const auth = isAuthenticated();
+  const auth = authService.isAuthenticated();
   return auth ? (
     <>{children}</>
   ) : (
