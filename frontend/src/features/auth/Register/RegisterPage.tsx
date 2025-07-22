@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   RegisterScreen,
   RegisterContainer,
@@ -110,6 +110,12 @@ const RegisterPage: React.FC = () => {
             <Button type="submit" disabled={loading}>
               {loading ? 'Registrando...' : 'Registrar'}
             </Button>
+            
+            <div style={{ marginTop: '15px', textAlign: 'center' }}>
+              <p style={{ fontSize: '14px', color: '#555' }}>
+                Já tem uma conta? <Link to="/login" style={{ color: '#3498db', textDecoration: 'none', fontWeight: 'bold' }}>Faça login</Link>
+              </p>
+            </div>
           </form>
         </RegisterCard>
       </RegisterContainer>

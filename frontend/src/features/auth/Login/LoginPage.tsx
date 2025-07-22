@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   GlobalStyles,
   LoginScreen,
@@ -135,6 +135,12 @@ const LoginPage: React.FC = () => {
               <Button type="submit" disabled={loading}>
                 {loading ? 'Entrando...' : 'Login'}
               </Button>
+              
+              <div style={{ marginTop: '15px', textAlign: 'center' }}>
+                <p style={{ fontSize: '14px', color: '#555' }}>
+                  Não tem uma conta? <Link to="/register" style={{ color: '#3498db', textDecoration: 'none', fontWeight: 'bold' }}>Registre-se</Link>
+                </p>
+              </div>
               
               <div style={{ marginTop: '20px', textAlign: 'center' }}>
                 <p style={{ fontSize: '14px', color: '#666' }}>Ou use uma conta de teste</p>
